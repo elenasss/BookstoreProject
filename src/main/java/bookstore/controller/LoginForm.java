@@ -6,7 +6,6 @@ public class LoginForm {
 
     private static JFrame loginFrame;
     private static boolean isAdmin;
-    private UIController uiController;
     private JTextField usernameField;
     private JPasswordField passwordField;
 
@@ -61,7 +60,7 @@ public class LoginForm {
     }
 
     private void openBookstore() {
-        uiController = new UIController(isAdmin);
+        UIController uiController = new UIController(isAdmin);
         uiController.createUI();
         uiController.show();
         loginFrame.dispose();
