@@ -5,7 +5,6 @@ import javax.swing.*;
 public class LoginForm {
 
     private static JFrame loginFrame;
-    private static boolean isAdmin;
     private JTextField usernameField;
     private JPasswordField passwordField;
 
@@ -47,11 +46,10 @@ public class LoginForm {
         String password = String.valueOf(passwordField.getPassword());
 
         if (username.equals("bookstore") && password.equals("admin")) {
-            isAdmin = true;
-            openBookstore();
+            openBookstore(true);
         } else if (username.equals("bookstore") && password.equals("user")) {
             JOptionPane.showMessageDialog(loginFrame, "You are logged in as USER");
-            openBookstore();
+            openBookstore(false);
         } else {
             JOptionPane.showMessageDialog(loginFrame, "The username or password is invalid!");
             usernameField.setText("");
@@ -59,7 +57,7 @@ public class LoginForm {
         }
     }
 
-    private void openBookstore() {
+    private void openBookstore(boolean isAdmin) {
         UIController uiController = new UIController(isAdmin);
         uiController.createUI();
         uiController.show();
